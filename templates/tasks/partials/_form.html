@@ -1,6 +1,7 @@
+{% url 'tasks:create_task' as create_task %}
 {% url 'tasks:create_collection' as create_collection %}
 
-<form method="POST" action="{{ create_collection }}">
+<form method="POST">
     {% csrf_token %}
 
     <input type="text" name="collection-name">
@@ -8,6 +9,19 @@
         type="submit"
         hx-post="{{ create_collection }}"
         hx-target="#collections-data"
+        hx-swap="beforeend"
+    >Ajouter</button>
+</form>
+
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="task-description">
+    <button
+        type="submit"
+        hx-post="{{ create_task }}"
+        hx-target="#tasks"
         hx-swap="beforeend"
     >Ajouter</button>
 </form>

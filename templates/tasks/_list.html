@@ -1,9 +1,21 @@
 {% extends 'base.html' %}
 
 {% block page_content %}
+	
 	<div id="collections-data">
 		{% for collection in collections %}
-			<h2>{{ collection.name|safe }}</h2>
+			<button
+				hx-get="{{ collection.get_absolute_url }}"
+				hx-target="#tasks"
+			>
+				{{ collection.name|safe }}
+			</button>
+		{% endfor %}
+	</div>
+
+	<div id="tasks">
+		{% for task in tasks %}
+			<h2>{{ task.description|safe }}</h2>
 		{% endfor %}
 	</div>
 
