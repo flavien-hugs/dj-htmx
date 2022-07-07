@@ -1,0 +1,22 @@
+{% url 'tasks:create_collection' as create_collection %}
+
+<form method="POST" action="{{ create_collection }}">
+    {% csrf_token %}
+
+    <input type="text" name="collection-name">
+    <button
+        type="submit"
+        hx-post="{{ create_collection }}"
+        hx-target="#collections-data"
+        hx-swap="beforeend"
+    >Ajouter</button>
+</form>
+
+
+<script>
+    document.body.addEventListener(
+        "htmx:responseError", function(event) {
+            alert(event.detail.xhr.responseText);
+        }
+    )
+</script>
