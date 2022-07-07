@@ -4,16 +4,16 @@ from django.urls import path
 
 from tasks import views
 
-app_name='tasks'
+app_name = 'tasks'
 urlpatterns = [
     path(
         route='',
         view=views.index_view,
-        name='task_list'
+        name='collections'
     ),
     path(
         route='create/task/',
         view=views.create_collection,
-        name='create_task'
+        name='create_collection'
     )
 ]
