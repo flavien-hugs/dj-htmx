@@ -73,4 +73,5 @@ media/
 .idea
 .git
 staticfiles
+fixtures
 */migrations/*.py
