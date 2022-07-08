@@ -22,6 +22,7 @@
         type="submit"
         hx-post="{{ create_task }}"
         hx-target="#tasks"
+        hx-vals="js:{collection: getCollectionFromURL()}"
         hx-swap="beforeend"
     >Ajouter</button>
 </form>
@@ -33,4 +34,10 @@
             alert(event.detail.xhr.responseText);
         }
     )
+
+    const getCollectionFromURL = () => {
+        let url = new URL(window.location.href);
+        let searchParams = url.searchParams;
+        return searchParams.get("collection");
+    }
 </script>
