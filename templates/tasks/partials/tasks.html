@@ -1,0 +1,5 @@
+<ol>
+	{% for task in tasks %}
+		{% include "tasks/partials/_task.html" with task=task %}	
+	{% endfor %}
+</ol>
