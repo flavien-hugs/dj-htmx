@@ -2,12 +2,15 @@
 
 from django.http import HttpResponse
 from django.utils.html import escape
+from django.template.loader import render_to_string
 from django.shortcuts import render, redirect, get_object_or_404
 
 from tasks.models import Collection, Task
 
 
 def homePageView(request):
+
+    context = {}
 
     collection_slug = request.GET.get("collection")
     collection = Collection.get_default_collection()
@@ -16,15 +19,17 @@ def homePageView(request):
         collection = get_object_or_404(Collection, slug=collection_slug)
 
     collections = Collection.objects.order_by('name')
+    context['collections'] = render_to_string(
+        'tasks/partials/_collection.html', context={"collections": collections}
+    )
+
     tasks = collection.task_set.order_by("description")
+    context['tasks'] = render_to_string(
+        'tasks/partials/_task.html', context={"tasks": tasks}
+    )
     
     template_name = 'tasks/_list.html'
-    context = {
-        'tasks': tasks,
-        'collections': collections
-    }
-
-    return render(request, template_name, context)
+    return render(request, template_name, context=context)
 
 
 index_view = homePageView
