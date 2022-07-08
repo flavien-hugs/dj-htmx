@@ -12,17 +12,17 @@ urlpatterns = [
         name='collections'
     ),
     path(
-        route='create/collection/',
+        route='add/collection/',
         view=views.create_collection,
         name='create_collection'
     ),
     path(
-        route="create/collection/task/",
+        route="add/collection/task/",
         view=views.create_task,
         name='create_task'
     ),
     path(
-        route="collection/<pk>/get-tasks/",
+        route="collection/<pk>/get/tasks/",
         view=views.get_tasks,
         name='get_tasks'
     )
