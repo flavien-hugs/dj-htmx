@@ -3,11 +3,17 @@
 {% block page_content %}
 	
 	<div id="collections-data">
-		{{ collections }}
+		{% for collection in collections %}
+			{% include "tasks/partials/_collection.html" with collection=collection %}
+		{% endfor %}
 	</div>
 
 	<div id="tasks">
-		{{ tasks }}
+		<ol>
+			{% for task in tasks %}
+				{% include "tasks/partials/_task.html" with task=task %}	
+			{% endfor %}
+		</ol>
 	</div>
 
 	{% include 'tasks/partials/_form.html' %}
