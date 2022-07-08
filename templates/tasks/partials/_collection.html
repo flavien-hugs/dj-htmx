@@ -1,8 +1,8 @@
-{% for collection in collections %}
-	<button
-		hx-get="{{ collection.get_absolute_url }}"
-		hx-target="#tasks"
-	>
-		{{ collection.name|safe }}
-	</button>
-{% endfor %}
+<button
+	hx-get="{{ collection.get_absolute_url }}" 
+	hx-push-url="?collection={{ collection.slug }}"
+	hx-target="#tasks"
+>
+{{ collection.name }}
+</button>
+
