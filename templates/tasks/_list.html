@@ -9,11 +9,9 @@
 	</div>
 
 	<div id="tasks">
-		<ol>
-			{% for task in tasks %}
-				{% include "tasks/partials/_task.html" with task=task %}	
-			{% endfor %}
-		</ol>
+		{% for task in tasks %}
+			{% include "tasks/partials/_task.html" with task=task %}	
+		{% endfor %}
 	</div>
 
 	{% include 'tasks/partials/_form.html' %}
