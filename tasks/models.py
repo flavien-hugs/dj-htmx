@@ -27,6 +27,9 @@ class Collection(models.Model):
     def get_absolute_url(self):
         return reverse("tasks:get_tasks", kwargs={'pk': self.pk})
 
+    def delete_collection_url(self):
+        return reverse("tasks:delete_collection", kwargs={'pk': self.pk})
+
 
 class Task(models.Model):
     description = models.CharField(max_length=300)
@@ -37,3 +40,6 @@ class Task(models.Model):
 
     def __str__(self) -> str:
         return self.description
+
+    def delete_task_url(self):
+        return reverse("tasks:delete_task", kwargs={'pk': self.pk})
