@@ -31,7 +31,7 @@ createsuperuser: ## Run the Django server
 
 .PHONY: dumpdata
 dumpdata: ## dumpdata on database
-	$(MANAGE) dumpdata --indent=4 --natural-foreign --natural-primary -e contenttypes --format=json tasks.collection > fixtures/collection.json
+	$(MANAGE) dumpdata --indent=4 --natural-foreign --natural-primary -e contenttypes --format=json tasks.collection > fixtures/collections.json
 	$(MANAGE) dumpdata --indent=4 --natural-foreign --natural-primary -e contenttypes --format=json tasks.task > fixtures/tasks.json
 
 .PHONY: loaddata
