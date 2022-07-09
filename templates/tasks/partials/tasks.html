@@ -1,5 +1,11 @@
-<ol>
+<div id="tasks">
 	{% for task in tasks %}
 		{% include "tasks/partials/_task.html" with task=task %}	
 	{% endfor %}
-</ol>
+</div>
+
+{% if collection.slug != "_default" %}
+    <a href="{{ collection.delete_collection_url }}">
+      Supprimer la collection
+    </a>
+{% endif %}
